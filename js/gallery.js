@@ -64,6 +64,8 @@ const images = [
   },
 ];
 
+// Додавання розмітки
+
 const markup = images
   .map(({ preview, original, description }) => {
     return `<li class="gallery-item">
@@ -84,13 +86,13 @@ const list = document.querySelector('.gallery');
 
 list.insertAdjacentHTML('beforeend', markup);
 
+// взаємодія
+
 list.addEventListener('click', event => {
+  event.preventDefault();
   if (event.target === event.currentTarget) {
     return;
   }
-
-  console.log(event.target.dataset.source);
-
   const instance = basicLightbox.create(`
     <img src=${event.target.dataset.source}>
 `);
